@@ -23,7 +23,7 @@ public class CandleBufferService {
 
     /** Викликаємо при старті: тягнемо останні N свічок і заповнюємо буфер */
     public void initFromHistory(int n) {
-        JsonNode arr = rest.klines(app.getSymbol(), app.getInterval(), n);
+        JsonNode arr = rest.klines(app.getSymbol(), String.valueOf(app.getIntervals()), n);
         List<Candle> list = new ArrayList<>(arr.size());
         for (JsonNode k : arr) {
             // формат масиву klines:
@@ -40,7 +40,7 @@ public class CandleBufferService {
         }
         buf.clear();
         for (Candle c : list) push(c);
-        log.info("Candle buffer initialized: {} bars ({} {})", buf.size(), app.getSymbol(), app.getInterval());
+        log.info("Candle buffer initialized: {} bars ({} {})", buf.size(), app.getSymbol(), app.getIntervals());
     }
 
     /** Додаємо ЗАКРИТУ свічку з WS; тримаємо не більше app.barsBuffer */

@@ -1,8 +1,8 @@
 app:
   symbol: BTCUSDT
-  interval: 1m
+  intervals: [ "1m", "5m", "15m", "1h" ]
   barsBuffer: 300
-  arm: false
+  historyLoad: 100
 
 binance:
   restBase: https://testnet.binancefuture.com

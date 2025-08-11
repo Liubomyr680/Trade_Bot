@@ -5,14 +5,16 @@ import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
+import java.util.List;
+
 @Setter
 @Getter
 @Configuration
 @ConfigurationProperties(prefix = "app")
 public class AppProps {
     private String symbol;
-    private String interval;
+    private List<String> intervals;
     private int barsBuffer = 300;
-    private boolean arm = false;
+    private int historyLoad = 100;
 
 }
