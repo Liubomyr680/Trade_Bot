@@ -26,4 +26,12 @@ public class FuturesRest {
     public void keepAliveListenKey(String listenKey) {
         http.putSigned("/fapi/v1/listenKey", Map.of("listenKey", listenKey));
     }
+
+    public com.fasterxml.jackson.databind.JsonNode klines(String symbol, String interval, int limit) {
+        return http.getPublic("/fapi/v1/klines", Map.of(
+                "symbol", symbol,
+                "interval", interval,
+                "limit", String.valueOf(limit)
+        ));
+    }
 }

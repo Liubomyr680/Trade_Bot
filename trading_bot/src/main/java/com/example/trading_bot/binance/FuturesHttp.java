@@ -13,6 +13,7 @@ import java.net.http.HttpResponse;
 import java.time.Duration;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Component
 public class FuturesHttp {
@@ -47,6 +48,13 @@ public class FuturesHttp {
         } catch (Exception e) {
             throw new RuntimeException("GET public " + path, e);
         }
+    }
+
+    public JsonNode getPublic(String path, Map<String, String> params) {
+        String query = params.entrySet().stream()
+                .map(e -> e.getKey() + "=" + e.getValue())
+                .collect(Collectors.joining("&"));
+        return getPublic(path + "?" + query);
     }
 
     public JsonNode getSigned(String path, Map<String,String> params) {
