@@ -1,0 +1,14 @@
+app:
+  symbol: BTCUSDT
+  interval: 1m
+  barsBuffer: 300
+  arm: false
+
+binance:
+  restBase: https://testnet.binancefuture.com
+  wsStreamBase: wss://fstream.binancefuture.com
+  recvWindowMs: 5000
+
+spring:
+  main:
+    banner-mode: "off"
